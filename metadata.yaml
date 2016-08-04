@@ -1,0 +1,45 @@
+_repo: The-Tragical-History-of-Doctor-Faustus--13-From-the-Quarto-of-1616_811
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Marlowe, Christopher
+    aliases:
+    - Marlo, Christopher
+    - Marloe, Christopher
+    - Marlow, Christopher
+    birthdate: 1564
+    deathdate: 1593
+    gutenberg_agent_id: '410'
+    url: http://www.gutenberg.org/2009/agents/410
+    wikipedia: http://en.wikipedia.org/wiki/Christopher_Marlowe
+  editor:
+    agent_name: Dyce, Alexander
+    birthdate: 1798
+    deathdate: 1869
+    gutenberg_agent_id: '5689'
+    url: http://www.gutenberg.org/2009/agents/5689
+    wikipedia: http://en.wikipedia.org/wiki/Alexander_Dyce
+description: "Albrecht Behmel (born March 24, 1971, in Black Forest) is a German artist,\
+  \ novelist, historian, best-selling non-fiction writer and award-winning playwright.\n\
+  \ From Wikipedia (CC BY-SA)."
+gutenberg_bookshelf: Harvard Classics
+gutenberg_issued: '1997-02-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '811'
+  wikidata: Q16201199
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Germany -- Drama'
+- !lcsh 'Magicians -- Drama'
+- !lcc 'PR'
+- !lcsh 'Tragedies'
+- !lcsh 'Faust, -approximately 1540 -- Drama'
+- GITenberg
+title: "The Tragical History of Doctor Faustus\r\nFrom the Quarto of 1616"
+url: http://www.gutenberg.org/ebooks/811
+wikipedia:
+- https://en.wikipedia.org/wiki/Doktor_Faust_und_Mephisto
