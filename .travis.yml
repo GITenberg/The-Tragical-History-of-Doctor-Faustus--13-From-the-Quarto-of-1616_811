@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: iGJ6WylVbvCLedACSXySwqhpZo3YrUg5R6XQnhjpY5mKfmDluSsfipjtXhH5xVuOd8P73iQxdHWgBnLowmx9P8Gxu4SgUkolDPu7E61YdTX+Fwriu71DZ9Gj4vQNENOiWmRBc/ZFKXKyYs6Eh8d4atnZKlguBWRZA+W5q8dvb/hY/0g0FTZ+VRJ8Rho4IcXbmC8LMu5VLe8ivmi8DXMP6ZhD18MGPW2UplDqRnxr+NVy41z1pSi9VkWW+YtKA2l2hkXN0d1v4U+4BjIFs9FCOCgiNWdV6cBIeukBCgVxkVJteIPFWuIBzIK4nx6xZAUncj03XBXsOsmQrIZe6/3XGQKKw9G2SEHNktv3V5eUEE5rhZjAEM40S57nHx6KQpRWH0UPkAe35lbM9EDhd21mqt4LTHVvQiEqOUxtF9viRu1d0tTwn6642aemJ7+UmYRfdqWi4SX7tZfv6jTBpBppZwQ8Iyf1dj/hgpMrpEJfW5s17jBa+hFnbQyiVOG+TDn/dbTTZtD3bZuRVdyMWjJ5++MZkhmk/sCSJ3Y/7X5EwpgqrH2b3OXsCAcvlVlsdJ04NTFEMgotb4cYEe3fCGZPXGUDBh5xuUZfQWcm4TEjc1bHiyAp2QMPUd8k/worbv+0luTdlGaKAjkVx5mYogwSFVuZl6MhvYQ1p45RCiUlFMo=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Tragical-History-of-Doctor-Faustus--13-From-the-Quarto-of-1616_811
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
